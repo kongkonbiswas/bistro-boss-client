@@ -46,7 +46,7 @@ npm run dev
 
 ## Remainder
 Setup your  ```PORT 
-DATABASE_URL```
+DATABASE_URL``` before starting the server
 
 
 ## Feedback
