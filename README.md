@@ -24,10 +24,30 @@ Inventory management for products is integrated (updates stock levels on order c
 - (likely) zod
 
 ## Installation Instructions
+  Step 1: Git Clone Repository
 ```
 git clone https://github.com/kongkonbiswas/level2-assignment-2.git
 
 ```
+  Step 2: Dependencies Install
+
+ ```
+ npm install
+ ```
+   Step 3: Convert typescript to JavaScript
+
+  ```
+  npm run build
+  ```
+   Step 4: Run on Local Server
+```
+npm run dev
+```
+
+## Remainder
+Setup your  ```PORT 
+DATABASE_URL```
+
 
 ## Feedback
 
