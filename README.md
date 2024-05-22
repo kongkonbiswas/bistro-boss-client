@@ -4,8 +4,7 @@ This project appears to be a backend API for managing orders. It uses Express fo
 
 # Demo
 
-Have a look the live preview [Click here to Check Live App](level2-assignment-2-plum.vercel.app
-).
+Have a look the live preview [Click here to Check Live App](https://level2-assignment-2-plum.vercel.app/).
 
 [Linkedin](https://www.linkedin.com/in/kongkon-biswas-a2374314a/).
 
