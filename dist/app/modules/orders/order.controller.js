@@ -20,14 +20,12 @@ const { createOrderService, getAllOrderService } = order_service_1.default;
 // **Create Order Controller:**
 const createOrderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { body } = req;
-    // Check for empty request body
     if (!body) {
         return res.send({
             success: false,
-            message: "No content found",
+            message: "No content found !",
         });
     }
-    // Validate order data using Zod schema
     const { data, error } = order_interface_1.zodOrder.safeParse(body);
     if (error) {
         return res.send({
@@ -42,7 +40,8 @@ exports.createOrderController = createOrderController;
 // **Get All Orders Controller:**
 const getAllOrderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { email } = req.query; // Get optional email filter from query parameters
+        const { email } = req.query;
+        // response data
         const find = {};
         if (email) {
             find.email = email;

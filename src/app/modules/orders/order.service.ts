@@ -14,14 +14,14 @@ const createOrderService = async (orderData: IOrder, res: Response) => {
       message: "",
     };
 
-    // Validate order quantity (should be at least 1)
+   // Validate order quantity (should be at least 1)
     if (orderData.quantity < 1) {
       response.message = "Insufficient order quantity";
       response.success = false;
       return res.status(400).send(response);
     }
 
-    // Find the product by ID
+    /// Find the product by ID
     const product = await Product.findById(productId);
     if (!product) {
       response.message = "Invalid product id";
@@ -31,9 +31,9 @@ const createOrderService = async (orderData: IOrder, res: Response) => {
 
     // Check product availability and stock
     const productObj = product.toObject();
-    const availableQntt = productObj.inventory.quantity;
+    const availableQuantity = productObj.inventory.quantity;
     const isStock = productObj.inventory.inStock;
-    if (!isStock || orderData.quantity > availableQntt) {
+    if (!isStock || orderData.quantity > availableQuantity) {
       response.message = "Insufficient quantity available in inventory";
       response.success = false;
       return res.status(400).json(response);
@@ -42,7 +42,7 @@ const createOrderService = async (orderData: IOrder, res: Response) => {
     // Update product inventory based on order quantity
     const isEqualQuantity = productObj.inventory.quantity === orderData.quantity;
 
-   // Update the isStock property if ordered quantity equals available quantity
+    // Update product inventory based on order quantity
     if (isEqualQuantity) {
       await Product.findByIdAndUpdate(
         productId,
@@ -50,7 +50,7 @@ const createOrderService = async (orderData: IOrder, res: Response) => {
         { new: true, runValidators: true }
       );
     } else {
-     // Update product quantity with remaining stock
+      // set new product Quantity
       await Product.findByIdAndUpdate(
         productId,
         {

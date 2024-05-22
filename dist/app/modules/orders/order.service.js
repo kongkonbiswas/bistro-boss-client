@@ -28,7 +28,7 @@ const createOrderService = (orderData, res) => __awaiter(void 0, void 0, void 0,
             response.success = false;
             return res.status(400).send(response);
         }
-        // Find the product by ID
+        /// Find the product by ID
         const product = yield product_model_1.default.findById(productId);
         if (!product) {
             response.message = "Invalid product id";
@@ -37,21 +37,21 @@ const createOrderService = (orderData, res) => __awaiter(void 0, void 0, void 0,
         }
         // Check product availability and stock
         const productObj = product.toObject();
-        const availableQntt = productObj.inventory.quantity;
+        const availableQuantity = productObj.inventory.quantity;
         const isStock = productObj.inventory.inStock;
-        if (!isStock || orderData.quantity > availableQntt) {
+        if (!isStock || orderData.quantity > availableQuantity) {
             response.message = "Insufficient quantity available in inventory";
             response.success = false;
             return res.status(400).json(response);
         }
         // Update product inventory based on order quantity
         const isEqualQuantity = productObj.inventory.quantity === orderData.quantity;
-        // Update the isStock property if ordered quantity equals available quantity
+        // Update product inventory based on order quantity
         if (isEqualQuantity) {
             yield product_model_1.default.findByIdAndUpdate(productId, { "inventory.inStock": false, "inventory.quantity": 0 }, { new: true, runValidators: true });
         }
         else {
-            // Update product quantity with remaining stock
+            // set new product Quantity
             yield product_model_1.default.findByIdAndUpdate(productId, {
                 "inventory.quantity": productObj.inventory.quantity - orderData.quantity,
             }, { new: true, runValidators: true });

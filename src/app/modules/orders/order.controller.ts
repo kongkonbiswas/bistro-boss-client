@@ -9,15 +9,12 @@ const { createOrderService, getAllOrderService } = orderServices;
 // **Create Order Controller:**
 export const createOrderController = async (req: Request, res: Response) => {
   const { body } = req;
-  // Check for empty request body
   if (!body) {
     return res.send({
       success: false,
-      message: "No content found",
+      message: "No content found !",
     });
   }
-
-  // Validate order data using Zod schema
   const { data, error } = zodOrder.safeParse(body);
   if (error) {
     return res.send({
@@ -33,7 +30,9 @@ export const createOrderController = async (req: Request, res: Response) => {
 // **Get All Orders Controller:**
 export const getAllOrderController = async (req: Request, res: Response) => {
   try {
-    const { email } = req.query; // Get optional email filter from query parameters
+    const { email } = req.query;
+
+    // response data
 
     const find: IAnyObject = {};
     if (email) {
