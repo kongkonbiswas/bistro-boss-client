@@ -23,11 +23,11 @@ Inventory management for products is integrated (updates stock levels on order c
 - mongoose
 - (likely) zod
 
+## Installation Instructions
+```
+git clone https://github.com/kongkonbiswas/level2-assignment-2.git
 
-## Demo
-
-I am working on it.
-
+```
 
 ## Feedback
 
@@ -56,8 +56,5 @@ Integrate payment processing functionality.
 
 [MIT License](LICENSE)
  
-
- <!-- ## Important command
-# npm i emailjs react-router-dom react-icons react-scroll styled-components typewriter-effect  -->
 
  ---Thank You---
